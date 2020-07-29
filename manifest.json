@@ -1,0 +1,29 @@
+{
+  "name": "Time to Chill",
+  "version": "0.1",
+  "content_scripts": [{
+    "matches": [
+      "<all_urls>"
+    ],
+    "js": ["p5.js", "content.js"]
+
+  }],
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+  "background":{
+    "scripts": ["background.js"]
+  },
+  "web_accessible_resources": [
+    "Sketch/snowflake.png",
+    "Sketch/ground.png", 
+    "music.mp3"
+  ],
+  "browser_action": {
+      "default_title": "Snowflake Break!",
+      "default_icon": "snowflake_icon.png",
+      "default_popup": "Sketch/index.html"
+  },
+  "manifest_version": 2
+}
