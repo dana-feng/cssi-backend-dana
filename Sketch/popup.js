@@ -19,6 +19,7 @@ let slider1,
   
   //creates slider
   function createSlider1() {
+    fill(0);
     slider1 = createSlider(0, 90, 100);
     slider1.position(width * 0.45, 150);
     slider1.style("width", "80px");
@@ -26,6 +27,7 @@ let slider1,
   };
   //creates slider
   function createSlider2() {
+    fill(0);
     slider2 = createSlider(0, 10, 100);
     slider2.position(width * 0.45, 250);
     slider2.style("width", "80px");
@@ -91,7 +93,12 @@ function setup(){
 
 
 function draw() {
-    background(210, 20, 95);
+    background(210, 95, 100);
+    //textStyle(BOLD)
+    fill (255);
+    textAlign(CENTER);
+    textFont('Helvetica');
+    text("Time to Chill", 0, 20, width)
     console.log("look!" + stillRunning);
     if(stillRunning == true){
       settings = true;
@@ -136,17 +143,19 @@ function draw() {
     if(settings == true && showStudy== true){
       textSize(20);
       textAlign(CENTER);
-      //fill(0);
+      fill(255);
       //text("Rest your eyes, stand up, and move around until the snow fills the screen.",0, 30, width );
       text(`Screen/Study Time Left: ${currentHours} hours, ${currentMinutes} min, ${currentSeconds} sec`, 0, height/4, width);
     }
     if(settings == true && showBreak== true){
       textSize(20);
-      //fill(0);
+      fill(255);
       textAlign(CENTER);
-      text("Rest your eyes, stand up, and move around until the snow reaches the top of your screen.",0, 30, width );
-      text("Make sure to click anywhere on the tab window you are currently on to make sure you hear some cheerful break music!", 0, height/2, width);
-      text(`Break Time Left: ${currentHours} hours, ${currentMinutes} min, ${currentSeconds} sec`, 0, height/4, width);
+      textSize(15);
+      text("Rest your eyes, stand up, and move around until the snow reaches the top of your screen.",0, 90, width );
+      text("Make sure to click off the popup and click anywhere on the tab window you are currently on to hear some cheerful break music!", 0, height-70, width);
+      textSize(20);
+      text(`Break Time Left: ${currentHours} hours, ${currentMinutes} min, ${currentSeconds} sec`, 0, (height/2) - 30, width);
     }
   
   
@@ -154,15 +163,19 @@ function draw() {
   
   function makeButton() {
     textSize(15);
+    noStroke();
     //textAlign(CENTER);
     button = rect(200, 350, 100, 40);
+    fill(210, 200, 200);
     text("START!", 225, 374);
   }
   
   function exitButton() {
     textSize(15);
+    noStroke();
     textAlign(LEFT);
     exit = rect(200, 350, 100, 40);
+    fill(210, 200, 200);
     text("EXIT!", 225, 374);
   }
   

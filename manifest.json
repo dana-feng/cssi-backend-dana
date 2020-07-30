@@ -21,7 +21,7 @@
     "music.mp3"
   ],
   "browser_action": {
-      "default_title": "Snowflake Break!",
+      "default_title": "The Chrome extension that makes you happier and healthier",
       "default_icon": "snowflake_icon.png",
       "default_popup": "Sketch/index.html"
   },
