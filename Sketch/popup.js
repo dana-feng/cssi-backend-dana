@@ -15,7 +15,7 @@ let slider1,
   bMinutes,
   bSeconds,
   exit, start, showStudy, showBreak, currentHours, currentMinutes, currentSeconds;
-  let stillRunning;
+let stillRunning;
   
   //creates slider
   function createSlider1() {
@@ -75,10 +75,6 @@ let slider1,
     }
   
   );
-  
-
-
-
 //called once
 function setup(){
     //start = false;
@@ -90,8 +86,6 @@ function setup(){
     createSlider1();
     createSlider2();
 }
-
-
 function draw() {
     background(210, 95, 100);
     //textStyle(BOLD)
@@ -125,26 +119,20 @@ function draw() {
       studyTimeSec = studyTime * 60; //in seconds
       breakTimeSec = breakTime * 60; //in seconds
       makeButton();
-      //messageBackground({"getData":true, "timerLength": studyTime, "breakLength": breakTime});
     }
-    
     if (settings == false) {
       slider1.show();
       slider2.show();
     }
-    
     if (settings == true) {
       slider1.hide();
       slider2.hide();
       exitButton();
-     
-      
     }
     if(settings == true && showStudy== true){
       textSize(20);
       textAlign(CENTER);
       fill(255);
-      //text("Rest your eyes, stand up, and move around until the snow fills the screen.",0, 30, width );
       text(`Screen/Study Time Left: ${currentHours} hours, ${currentMinutes} min, ${currentSeconds} sec`, 0, height/4, width);
     }
     if(settings == true && showBreak== true){
@@ -157,10 +145,6 @@ function draw() {
       textSize(20);
       text(`Break Time Left: ${currentHours} hours, ${currentMinutes} min, ${currentSeconds} sec`, 0, (height/2) - 30, width);
     }
-  
-  
- 
-  
   function makeButton() {
     textSize(15);
     noStroke();
@@ -169,7 +153,6 @@ function draw() {
     fill(210, 200, 200);
     text("START!", 225, 374);
   }
-  
   function exitButton() {
     textSize(15);
     noStroke();
@@ -178,23 +161,10 @@ function draw() {
     fill(210, 200, 200);
     text("EXIT!", 225, 374);
   }
-  
-  
-  
-  
-  
-  
-  
-
 }
-
 function messageBackground(message){
   console.log("from popup: sent the variables");
   chrome.runtime.sendMessage(message, function(response) {
-        
-        console.log(response);
-
-      });
+    console.log(response);
+  });
 }
-
-

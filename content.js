@@ -1,16 +1,10 @@
 // Daniel Shiffman
 // http://codingtra.in
 // http://patreon.com/codingtrain
-
-console.log('sketch blah');
-
-console.log("Chrome extension go?");
-
-
+console.log("Content Script Running");
 let stopNow, playNow, music1;
 music1 = new Audio(chrome.runtime.getURL('music.mp3')); 
 chrome.runtime.onMessage.addListener(gotMessage);
-
 function gotMessage(message, sender, sendResponse) {
   if(message.animation==true){
     console.log("start animation");
@@ -24,33 +18,25 @@ function gotMessage(message, sender, sendResponse) {
     stopNow = true;
     playNow = false;
     myp5 = null;
-  }
-  
+  } 
 }
-
-// sample P5 for implementing snowfalling
+// implement snowfall
 let snow, img, move, ground, groundY, pos, c;
 var s = function(sketch) {
   sketch.setup = function() {
     console.log("setting up!");
     document.body.style['userSelect'] = 'none';
     pos = 0;
-    //let h = document.body.clientHeight;
     c = sketch.createCanvas(sketch.windowWidth, sketch.windowHeight);
     c.position(0, pos);
     c.style('pointer-events', 'none');
     sketch.clear();
-    //createCanvas(windowWidth - 20, windowHeight - 20);
-    move = 1/(rate/10 + 3); //move = 1 is about 10 seconds
+    move = 1/(rate/10 + 3); 
     groundY =0;
-    
-    //TODO: make it so that images can be accessed locally
     img = sketch.loadImage(
-      
       chrome.runtime.getURL('Sketch/snowflake.png')
     );
     ground = sketch.loadImage(
-      
       chrome.runtime.getURL('Sketch/ground.png')
     );
     snow = [];
@@ -62,22 +48,17 @@ var s = function(sketch) {
       }
     }
   };
-
   sketch.mouseWheel = function(event){
     if ((pos >= 0 && event.delta<0) || (pos < document.body.clientHeight-sketch.windowHeight && event.delta >0)){
       pos += event.delta;
     }
-    
     console.log("changing where animation is!" + pos,document.body.clientHeight-sketch.windowHeight);
-
   };
-
   sketch.draw = function() {
     if(stopNow == true){
       sketch.remove();
       music1.pause();
       console.log("removed!");
-
     }
     if(playNow == true){
       console.log("playing music");
@@ -109,7 +90,6 @@ var s = function(sketch) {
       sketch.noLoop();
     }
   };
-
   class Snowflake {
     //snowflake class that animates and displays snowflakes
     constructor(one) {
@@ -130,35 +110,9 @@ var s = function(sketch) {
         this.x = sketch.random(sketch.windowWidth);
       }
     }
-  
     display() {
-      //fill(this.color);
-      //noStroke();
       sketch.image(img, this.x, this.y, this.width, this.height);
-      //ellipse(this.x, this.y, this.r * 2);
     }
   };
   
 };
-
-
-
-
-
-/*
-function click(e) {
-  chrome.tabs.executeScript(null,
-      {code:"document.body.style.backgroundColor='" + e.target.id + "'"});
-  window.close();
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  var divs = document.querySelectorAll('div');
-  for (var i = 0; i < divs.length; i++) {
-    divs[i].addEventListener('click', click);
-  }
-});
-*/
-
-
-
